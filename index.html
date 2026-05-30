@@ -100,7 +100,7 @@
     .menu {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 24px;
       list-style: none;
     }
 
@@ -148,6 +148,23 @@
       border-color: var(--verde);
       color: var(--verde);
       transform: translateY(-3px);
+    }
+
+    .nav-acciones {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-instagram {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #ffffff;
+      box-shadow: 0 0 28px rgba(253, 29, 29, 0.22);
+    }
+
+    .btn-instagram:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 34px rgba(253, 29, 29, 0.34);
     }
 
     .menu-movil {
@@ -302,33 +319,21 @@
       animation-delay: 2s;
     }
 
-    .mock-shirt {
+    .hero-img {
+      width: 100%;
       height: 160px;
+      object-fit: contain;
       border-radius: 24px;
-      background: linear-gradient(135deg, #ffffff 0 24%, #e11d48 24% 35%, #ffffff 35% 65%, #1d4ed8 65% 78%, #ffffff 78% 100%);
       margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
+      padding: 8px;
+      background:
+        radial-gradient(circle at center, rgba(0, 200, 83, 0.12), transparent 62%),
+        rgba(255, 255, 255, 0.03);
+      transition: transform 0.3s ease;
     }
 
-    .mock-shirt.dark {
-      background: linear-gradient(135deg, #111 0 35%, #00c853 35% 47%, #111 47% 72%, #facc15 72% 82%, #111 82% 100%);
-    }
-
-    .mock-shirt.retro {
-      background: linear-gradient(135deg, #7c2d12 0 30%, #facc15 30% 42%, #7c2d12 42% 70%, #ffffff 70% 82%, #7c2d12 82% 100%);
-    }
-
-    .mock-shirt::after {
-      content: "FULLKIT";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      font-weight: 900;
-      color: rgba(0,0,0,0.45);
+    .camiseta-card:hover .hero-img {
+      transform: scale(1.08) rotate(-2deg);
     }
 
     .camiseta-card h3 {
@@ -406,9 +411,21 @@
       transform: scale(1.25);
     }
 
-    .categoria .icono {
-      font-size: 2.2rem;
-      margin-bottom: 30px;
+    .categoria-logo {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 12px rgba(0, 200, 83, 0.22));
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .categoria:hover .categoria-logo {
+      transform: scale(1.12) rotate(-3deg);
+      filter: drop-shadow(0 0 18px rgba(0, 200, 83, 0.35));
     }
 
     .categoria h3 {
@@ -559,8 +576,8 @@
 
     .parches-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
     }
 
     .parche-card {
@@ -577,54 +594,79 @@
       box-shadow: 0 0 30px rgba(250, 204, 21, 0.16);
     }
 
-    .parche-img {
-      height: 210px;
+    .parche-slider {
+      height: 260px;
       background:
-        radial-gradient(circle at center, rgba(250, 204, 21, 0.16), transparent 58%),
+        radial-gradient(circle at center, rgba(250, 204, 21, 0.14), transparent 58%),
         #0d0d0d;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 28px;
       position: relative;
+      overflow: hidden;
     }
 
-    .parche-mock {
-      width: 130px;
-      height: 130px;
+    .parche-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
+    }
+
+    .parche-card:hover .parche-slider img {
+      transform: scale(1.04);
+    }
+
+    .flecha-parche {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      border: 6px solid var(--dorado);
-      background: linear-gradient(145deg, #111, #242424);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.88);
+      color: #111;
+      font-size: 1.5rem;
+      font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      cursor: pointer;
+      z-index: 4;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .flecha-parche:hover {
+      background: var(--verde);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .flecha-parche.izquierda {
+      left: 16px;
+    }
+
+    .flecha-parche.derecha {
+      right: 16px;
+    }
+
+    .contador-parche {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #111;
       font-weight: 900;
-      color: var(--texto);
       font-size: 0.9rem;
-      letter-spacing: 1px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-      transition: transform 0.3s ease;
-    }
-
-    .parche-card:hover .parche-mock {
-      transform: scale(1.08) rotate(-4deg);
-    }
-
-    .parche-mock.azul {
-      border-color: #38bdf8;
-    }
-
-    .parche-mock.verde {
-      border-color: var(--verde);
-    }
-
-    .parche-mock.rojo {
-      border-color: var(--rojo);
+      z-index: 4;
     }
 
     .parche-info {
-      padding: 22px;
+      padding: 26px;
     }
 
     .parche-info small {
@@ -635,14 +677,14 @@
     }
 
     .parche-info h3 {
-      font-size: 1.1rem;
+      font-size: 1.35rem;
       margin: 10px 0;
     }
 
     .parche-info p {
       color: var(--texto-suave);
       line-height: 1.6;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .paso {
@@ -782,7 +824,7 @@
     }
 
     @media (max-width: 980px) {
-      .menu, .nav .btn-verde {
+      .menu, .nav-acciones {
         display: none;
       }
 
@@ -864,12 +906,16 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#catalogo">Catálogo</a></li>
         <li><a href="#destacadas">Destacadas</a></li>
+        <li><a href="#encargos">Cómo funciona</a></li>
         <li><a href="#parches">Parches</a></li>
         <li><a href="#tallas">Guía de tallas</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
 
-      <a class="btn btn-verde" href="https://wa.me/34000000000" target="_blank">Pedir por WhatsApp</a>
+      <div class="nav-acciones">
+        <a class="btn btn-verde" href="https://wa.me/34000000000" target="_blank">WhatsApp</a>
+        <a class="btn btn-instagram" href="https://www.instagram.com/" target="_blank">Instagram</a>
+      </div>
       <div class="menu-movil">☰</div>
     </div>
   </header>
@@ -878,7 +924,7 @@
     <section class="hero" id="inicio">
       <div class="contenedor hero-grid">
         <div class="hero-text reveal">
-          <div class="etiqueta">⚽ Catálogo visual de camisetas</div>
+          <div class="etiqueta">⚽ Diseñada por Ángel Alameda</div>
           <h1>Viste tus <span>colores</span>.</h1>
           <p>
             Camisetas de fútbol actuales, retro, selecciones y clubes de todo el mundo.
@@ -909,17 +955,17 @@
         <div class="hero-visual reveal">
           <div class="circulo-glow"></div>
           <div class="camiseta-card">
-            <div class="mock-shirt"></div>
+            <img class="hero-img" src="img/hero-actual.png" alt="Camiseta actual FullKit">
             <h3>Actuales</h3>
             <p>Modelos de la nueva temporada.</p>
           </div>
           <div class="camiseta-card">
-            <div class="mock-shirt dark"></div>
-            <h3>Especiales</h3>
-            <p>Diseños llamativos y versiones fan/player.</p>
+            <img class="hero-img" src="img/hero-seleccion.png" alt="Camiseta de selección FullKit">
+            <h3>Selecciones</h3>
+            <p>Camisetas de países y torneos.</p>
           </div>
           <div class="camiseta-card">
-            <div class="mock-shirt retro"></div>
+            <img class="hero-img" src="img/hero-retro.png" alt="Camiseta retro FullKit">
             <h3>Retro</h3>
             <p>Camisetas históricas y clásicas.</p>
           </div>
@@ -941,49 +987,49 @@
 
         <div class="categorias-grid">
           <article class="categoria reveal">
-            <div class="icono">🇪🇸</div>
+            <img class="categoria-logo" src="img/logos/laliga.png" alt="Logo LaLiga">
             <h3>LaLiga</h3>
             <p>Real Madrid, Barça, Atleti, Betis, Sevilla y más.</p>
           </article>
 
           <article class="categoria reveal">
-            <div class="icono">🏴</div>
+            <img class="categoria-logo" src="img/logos/premier.png" alt="Logo Premier League">
             <h3>Premier League</h3>
             <p>Equipos ingleses, camisetas locales, visitantes y especiales.</p>
           </article>
 
           <article class="categoria reveal">
-            <div class="icono">🇮🇹</div>
+            <img class="categoria-logo" src="img/logos/serie-a.png" alt="Logo Serie A">
             <h3>Serie A</h3>
             <p>Diseños italianos actuales y camisetas clásicas.</p>
           </article>
 
           <article class="categoria reveal">
-            <div class="icono">🇩🇪</div>
+            <img class="categoria-logo" src="img/logos/bundesliga.png" alt="Logo Bundesliga">
             <h3>Bundesliga</h3>
             <p>Camisetas de clubes alemanes y modelos destacados.</p>
           </article>
 
           <article class="categoria reveal">
-            <div class="icono">🇫🇷</div>
+            <img class="categoria-logo" src="img/logos/ligue-1.png" alt="Logo Ligue 1">
             <h3>Ligue 1</h3>
             <p>PSG, Marsella, Lyon y más camisetas francesas.</p>
           </article>
 
           <article class="categoria reveal">
-            <div class="icono">🌍</div>
+            <img class="categoria-logo" src="img/logos/selecciones.png" alt="Logo Selecciones">
             <h3>Selecciones</h3>
             <p>España, Argentina, Brasil, Portugal, Francia y más.</p>
           </article>
 
           <article class="categoria reveal">
-            <div class="icono">🕰️</div>
+            <img class="categoria-logo" src="img/logos/retro.png" alt="Logo Retro">
             <h3>Retro</h3>
             <p>Camisetas históricas para coleccionistas y amantes del fútbol.</p>
           </article>
 
           <article class="categoria reveal">
-            <div class="icono">🌐</div>
+            <img class="categoria-logo" src="img/logos/resto-mundo.png" alt="Logo Resto del mundo">
             <h3>Resto del mundo</h3>
             <p>Camisetas de clubes fuera de las 5 grandes ligas y ediciones especiales.</p>
           </article>
@@ -1119,56 +1165,50 @@
             <h2>Parches disponibles</h2>
           </div>
           <p>
-            Apartado pensado para que el cliente vea los parches, haga captura del que quiere y te lo mande por WhatsApp o Instagram junto con la camiseta elegida.
+            El cliente puede pasar las imágenes con las flechas, hacer captura del parche que quiere y mandártelo por WhatsApp o Instagram junto con la camiseta elegida.
           </p>
         </div>
 
         <div class="parches-grid">
           <article class="parche-card reveal">
-            <div class="parche-img">
-              <span class="badge">Liga</span>
-              <div class="parche-mock">LA<br>LIGA</div>
+            <div class="parche-slider" data-categoria="ligas">
+              <button class="flecha-parche izquierda" type="button" aria-label="Parche anterior">‹</button>
+              <img src="img/parches/parche-laliga.png" alt="Parche LaLiga">
+              <button class="flecha-parche derecha" type="button" aria-label="Parche siguiente">›</button>
+              <span class="contador-parche">1/5</span>
             </div>
             <div class="parche-info">
-              <small>Parche competición</small>
-              <h3>Parche LaLiga</h3>
-              <p>Ejemplo de parche para camisetas de equipos españoles.</p>
+              <small>Parches de ligas</small>
+              <h3>Parches de ligas</h3>
+              <p>LaLiga, Premier League, Serie A, Bundesliga y Ligue 1.</p>
             </div>
           </article>
 
           <article class="parche-card reveal">
-            <div class="parche-img">
-              <span class="badge">UCL</span>
-              <div class="parche-mock azul">CHAMPIONS</div>
+            <div class="parche-slider" data-categoria="europa">
+              <button class="flecha-parche izquierda" type="button" aria-label="Parche anterior">‹</button>
+              <img src="img/parches/parche-champions.png" alt="Parche Champions League">
+              <button class="flecha-parche derecha" type="button" aria-label="Parche siguiente">›</button>
+              <span class="contador-parche">1/5</span>
             </div>
             <div class="parche-info">
-              <small>Parche europeo</small>
-              <h3>Parche Champions League</h3>
-              <p>Ideal para camisetas de clubes que juegan competición europea.</p>
+              <small>Parches de Europa</small>
+              <h3>Parches de Europa</h3>
+              <p>Champions League, Europa League y Conference League.</p>
             </div>
           </article>
 
           <article class="parche-card reveal">
-            <div class="parche-img">
-              <span class="badge">Top</span>
-              <div class="parche-mock verde">RESPECT</div>
+            <div class="parche-slider" data-categoria="mundial">
+              <button class="flecha-parche izquierda" type="button" aria-label="Parche anterior">‹</button>
+              <img src="img/parches/parches-mundial.png" alt="Parche Mundial">
+              <button class="flecha-parche derecha" type="button" aria-label="Parche siguiente">›</button>
+              <span class="contador-parche">1/1</span>
             </div>
             <div class="parche-info">
-              <small>Parche UEFA</small>
-              <h3>Parche Respect</h3>
-              <p>Complemento habitual en camisetas de competiciones UEFA.</p>
-            </div>
-          </article>
-
-          <article class="parche-card reveal">
-            <div class="parche-img">
-              <span class="badge">Retro</span>
-              <div class="parche-mock rojo">WORLD<br>CUP</div>
-            </div>
-            <div class="parche-info">
-              <small>Parche selección</small>
-              <h3>Parche Mundial</h3>
-              <p>Ejemplo para camisetas de selecciones o modelos especiales.</p>
+              <small>Parches mundial</small>
+              <h3>Parches mundial</h3>
+              <p>Parches de competiciones mundiales y selecciones.</p>
             </div>
           </article>
         </div>
@@ -1330,6 +1370,102 @@
   </footer>
 
   <script>
+    const parches = {
+      ligas: [
+        {
+          src: 'img/parches/parche-laliga.png',
+          alt: 'Parche LaLiga'
+        },
+        {
+          src: 'img/parches/parche-premier.png',
+          alt: 'Parche Premier League'
+        },
+        {
+          src: 'img/parches/parche-serie-a.png',
+          alt: 'Parche Serie A'
+        },
+        {
+          src: 'img/parches/parche-bundesliga.png',
+          alt: 'Parche Bundesliga'
+        },
+        {
+          src: 'img/parches/parche-ligue-1.png',
+          alt: 'Parche Ligue 1'
+        }
+      ],
+      europa: [
+        {
+          src: 'img/parches/parche-champions.png',
+          alt: 'Parche Champions League'
+        },
+        {
+          src: 'img/parches/parche6champions.png',
+          alt: 'Parche 6 Champions League'
+        },
+        {
+          src: 'img/parches/parche-15champions.png',
+          alt: 'Parche 15 Champions League'
+        },
+        {
+          src: 'img/parches/parche-conference.png',
+          alt: 'Parche Conference League'
+        },
+        {
+          src: 'img/parches/parche-europaleague.png',
+          alt: 'Parche Europa League'
+        }
+      ],
+      mundial: [
+        {
+          src: 'img/parches/parches-mundial.png',
+          alt: 'Parche Mundial'
+        }
+      ]
+    };
+
+    const slidersParches = document.querySelectorAll('.parche-slider');
+
+    slidersParches.forEach((slider) => {
+      const categoria = slider.dataset.categoria;
+      const imagen = slider.querySelector('img');
+      const contador = slider.querySelector('.contador-parche');
+      const botonIzquierda = slider.querySelector('.flecha-parche.izquierda');
+      const botonDerecha = slider.querySelector('.flecha-parche.derecha');
+      const lista = parches[categoria];
+      let posicionActual = 0;
+
+      const actualizarParche = () => {
+        imagen.style.opacity = '0';
+
+        setTimeout(() => {
+          imagen.src = lista[posicionActual].src;
+          imagen.alt = lista[posicionActual].alt;
+          contador.textContent = `${posicionActual + 1}/${lista.length}`;
+          imagen.style.opacity = '1';
+        }, 180);
+      };
+
+      botonDerecha.addEventListener('click', () => {
+        posicionActual++;
+
+        if (posicionActual >= lista.length) {
+          posicionActual = 0;
+        }
+
+        actualizarParche();
+      });
+
+      botonIzquierda.addEventListener('click', () => {
+        posicionActual--;
+
+        if (posicionActual < 0) {
+          posicionActual = lista.length - 1;
+        }
+
+        actualizarParche();
+      });
+    });
+
     const elementosReveal = document.querySelectorAll('.reveal');
 
     const mostrarElemento = () => {
